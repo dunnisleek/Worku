@@ -52,6 +52,7 @@ dt{
        position: relative;
        margin: auto;
        text-align: left; 
+       font-family: 'Inter', sans-serif;
 
 }
 dd{
@@ -60,10 +61,42 @@ dd{
        position: relative;
        margin: auto;
        text-align: left;   
+       font-size: 17px;
+       line-height: 25px;
+       font-family: 'Inter', sans-serif;
 }
 i{
        position: absolute;
        display: inline-flex;
        left:50rem;
+}
+@media screen and (max-width:576px){
+       dt{
+              width:auto;
+       }
+       i{
+              left:13rem;
+       }
+       dd{
+              width:auto;
+       }
+       div{
+              padding:10px 20px;
+       }
+       h2{
+              font-size: 25px;
+       }
+}
+
+@media screen and (min-width:577px) and (max-width:768px){
+       dt{
+       width:75%;
+       }
+       dd{
+              width:75%;
+       }
+       i{
+              left:38rem;
+       }
 }
 </style>

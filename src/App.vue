@@ -15,7 +15,8 @@ import TheFooter from '@/components/TheFooter.vue';
 export default {
   name: 'App',
   components: {
-   TheNavigation ,TheFooter
+   TheFooter,
+   TheNavigation 
   }
   
 
@@ -24,9 +25,9 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
+font-family: 'Krona One', sans-serif;
+overflow:hidden;
   
   
 }

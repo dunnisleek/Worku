@@ -28,18 +28,22 @@
       </h2>
 
       <!-- <video src="" controls>   </video> -->
-      <div>
-        <iframe
-          class="youtubevideo"
-          width="800"
-          height="475"
-          src="https://www.youtube.com/embed/lKw6uqtGFfo"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-      </div>
+
+      <div class="vid">
+        <video class="youtubevideo" width="900" height="" ref="videoPlayer">
+          <source src="@/assets/sunset-153976.mp4" type="video/mp4" :class="{ 'hidden': !playing }"/>
+          Your browser does not support the video tag.
+        </video>
+
+        <button class="playericon "   @click="togglePlayPause">
+          <i v-show="!playing"  class="fas fa-play"></i>
+          <i v-show="playing" class="fas fa-pause"></i>
+        </button>
+
+    </div>
+    
+
+   
     </div>
     <!-- start of the content box -->
     <div class="contentboxWrapper">
@@ -48,7 +52,7 @@
 
         <div>
           <li class="titleBox">{{ content.title }}</li>
-          <li>{{ content.description }}</li>
+          <li class="contentboxpara">{{ content.description }}</li>
         </div>
       </ul>
     </div>
@@ -59,7 +63,7 @@
       <div><img src="@/assets/lady.png" /></div>
 
       <div class="growth">
-        <h2>Grow faster than your compititors</h2>
+        <h2>Grow faster than your competitors</h2>
         <p>
           Single Page Applications are web apps or sites that interact with the
           user by dynamically rewriting the current page rather than loading
@@ -98,47 +102,53 @@
       </div>
     </div>
     <!-- start of carousel -->
-    <div>
-      <TheCarousel class="carousel" v-slot="{ currentSlide }">
-       
+    <div class="carousel">
+      <TheCarousel v-slot="{ currentSlide }">
         <TheSlider v-for="(slide, index) in carouselSlides" :key="index">
           <div v-show="currentSlide === index + 1" class="slide-info">
             <!-- <img class="slideImg" :src="require(`../assets/${slide}`)" /> -->
-           
-            <h2 class="slide-text">{{slide.description}} </h2>
-            <p class="slide-name">{{ slide.name}}</p>
-            <p class="slide-role">{{ slide.role }}</p>
-            <img :src="require(`../assets/${slide.image}`)"/>
-          
+
+            <h2 class="slide-text">{{ slide.description }}</h2>
+            <div class="info">
+              <div>
+                <img :src="require(`../assets/${slide.image}`)" />
+              </div>
+              <p class="slide-name">{{ slide.name }}</p>
+              <p class="slide-role">{{ slide.role }}</p>
+            </div>
           </div>
         </TheSlider>
-       
       </TheCarousel>
     </div>
     <!-- start of form section -->
     <div class="start-of-form">
-        <div>
-         <h2>Signup for early access offer!</h2>
-         <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada 
-          feugiat. Quisque velit nisi, pretium ut lacinia in, elementum id enim</p>
+      <div>
+        <h2>Signup for early access offer!</h2>
+        <p>
+          Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+          Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi,
+          pretium ut lacinia in, elementum id enim
+        </p>
 
-          <form @submit.prevent="onSubmit">
-            <input v-model="username" type="text" placeholder="Name"/>
-            <!-- <label>{{ username }}</label> -->
-            <input v-model="email" type="email" placeholder="Email"/>
-            <button class="formBtn" @click="submitForm">Submit</button>
-          </form>
-        </div>
-        <div>
-          <img class="signupImg" src="@/assets/Signup-Image.png"/>
-        </div>
-
+        <form @submit.prevent="onSubmit">
+          <input v-model="username" type="text" placeholder="Rose" />
+          <!-- <label>{{ username }}</label> -->
+          <input
+            v-model="email"
+            type="email"
+            placeholder="rossmartin@gmail.com"
+          />
+          <button class="formBtn" @click="submitForm">Submit</button>
+        </form>
+      </div>
+      <div>
+        <img class="signupImg" src="@/assets/Signup-Image.png" />
+      </div>
     </div>
-  <!-- end of form section -->
+    <!-- end of form section -->
 
     <!-- start of FAQs section -->
-   <AccordionSection ></AccordionSection>
- 
+    <AccordionSection></AccordionSection>
   </article>
 </template>
 <script>
@@ -161,13 +171,16 @@ export default{
                               "https://media.istockphoto.com/id/1348229043/photo/business-accountant-accountant-and-bookkeeper.jpg?b=1&s=170667a&w=0&k=20&c=augRvCO7cjzN58g8yvwsM0w9zXjw8hDjLN_5TwXYcc8="
                             ],
                       username:'',
-                      email:''      
+                      email:''  ,
+                      playing: false,
+                      
+      isPaused: true
 
               }
        },
 
               setup(){
-              const carouselSlides = [ 
+              const carouselSlides = [
                      {description:'This app is amazing Now im able to manage all my freelancing and agency work under one place. it make my life easy',
                       role:'freelancer',
                       name:'ASHUTOSH MEHTA',
@@ -188,12 +201,37 @@ export default{
          submitForm(){
            const ans= this.username + " " +this.email
              console.log(ans)
-         }
-       }
+         },
+
+         togglePlayPause() {
+            this.playing = !this.playing;
+            setTimeout(() => {
+           this.hidePlayPauseBtn();
+        }, 2000);
+        if (this.playing) {
+                // code to play video
+              this.$refs.videoPlayer.play();
+          } else {
+         // code to pause video
+      this.$refs.videoPlayer.pause();
+    }
+  },
+  hidePlayPauseBtn() {
+      const playPauseBtn = document.querySelector('.playericon');
+      playPauseBtn.classList.add('hide');
+    }
 }
+
+
+  }
+      
+      
 </script>
 
 <style scoped>
+p {
+  font-family: "Inter", sans-serif;
+}
 .pink {
   height: 100vh;
   width: 100%;
@@ -212,15 +250,15 @@ section {
 body {
   margin: 0;
   padding: 0;
- 
 }
 .wrap {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  /* max-width:fit-content; */
 }
 .heroImg {
-  width: 750px;
+  max-width: 750px;
   height: auto;
   position: relative;
   left: 0;
@@ -231,15 +269,20 @@ body {
   position: relative;
   top: 150px;
   left: 5rem;
+  max-width: 801px;
+  margin: 0 auto;
 }
 h1 {
-  font-size: 70px;
-  line-height: 70px;
+  font-size: 50px;
+  line-height: 65px;
+  font-weight: 300;
   padding-left: 2rem;
   text-transform: capitalize;
+  font-family: "Krona One", sans-serif;
 }
 .para {
   font-size: 17px;
+  line-height: 25px;
   padding-right: 10rem;
   padding-left: 2rem;
   position: relative;
@@ -270,10 +313,11 @@ h1 {
 
 button {
   background: #e0ff00;
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 20px;
   padding: 10px;
   margin-left: 2rem;
-
+  font-family: "Inter", sans-serif;
   border-radius: 5px;
   width: 10rem;
   border: none;
@@ -287,10 +331,10 @@ button:hover {
   padding: 10rem 2rem;
 }
 
-.wrapper h2{
-  width:795px;
+.wrapper h2 {
+  width: 880px;
 }
- h2 {
+h2 {
   font-size: 50px;
   line-height: 60px;
   margin: auto;
@@ -336,6 +380,9 @@ ul:nth-child(2) {
   background: #f2f0f0;
   transition: all 0.3s linear;
 }
+.contentboxpara:nth-child(2) {
+  padding-top: 20px;
+}
 ul:nth-child(2):hover {
   background: #000000;
   color: #ffffff;
@@ -357,8 +404,13 @@ ul:hover {
   transform: scale(0.9);
 }
 .titleBox {
-  font-size: 30px;
-  padding: 20px 0px;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 20px 0px 0px 0px;
+}
+.contentboxpara {
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
 }
 /* end of the content box  */
 
@@ -382,7 +434,8 @@ button:hover {
   flex-direction: row;
   gap: 100px;
   flex-wrap: nowrap;
-
+  justify-content: center;
+  align-items: center;
   padding: 65px 150px 65px 100px;
 }
 /* .first{
@@ -395,6 +448,7 @@ button:hover {
   width: 34rem;
 }
 .growth h2 {
+  font-size: 35px;
   width: 620px;
 }
 
@@ -415,96 +469,548 @@ button:hover {
   position: relative;
   overflow: hidden;
   max-height: 100vh;
-  padding:40px 0px;
+  padding: 40px 0px;
   height: 60vh;
-  background: #140D2D;
+  background: #140d2d;
 }
-.carousel img{
-       position: absolute;
-       /* border-radius:70%; */
-       height:12vh;
-       object-fit: cover;
-       top:290px;
-       width:80px;
-       left:300px;
+.carousel img {
+  position: absolute;
+  /* border-radius:70%; */
+  height: 12vh;
+  object-fit: cover;
+  top: 299px;
+  left: 19rem;
+  width: 80px;
 }
 .slide-info {
   position: absolute;
   width: 100%;
   height: 80%;
   top: 40;
-  left: 0; 
-  
+  left: 0;
 }
-.slide-text{
+.slide-text {
   /* min-width: 100%;
   height: 40vh; */
-  padding-top:30px;
-  color:#fff;
+  font-size: 38px;
+  padding-top: 30px;
+  color: #fff;
 }
 /* .slideView{
        font-size: 50px;
 } */
-.slide-name{
+.slide-name {
   position: absolute;
-  top:300px;
-left:390px;
-color:#fff;
+  top: 300px;
+  left: 401px;
+  color: #fff;
 }
-.slide-role{
-position: absolute;
-top:330px;
-left:390px;
-color:#8F85B2;
+.slide-role {
+  position: absolute;
+  top: 330px;
+  left: 401px;
+  color: #8f85b2;
 }
 
-
-.start-of-form{
+.start-of-form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  gap: 50px;
-  margin: 0px 50PX;
-  padding:130px 0px 80px 0px;
-
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 0px;
 }
-.start-of-form h2{
-  font-size: 50px;
-    color: #000000;
-    text-transform: capitalize;
-    padding: 10px 26px;
-    width: 32rem;
-
- }
- .formBtn{
-  margin-left:23px;
- }
-.start-of-form p{
-  color:#000000;
-  font-size:18px;
-  margin-left:25px;
-
-} 
-.start-of-form div:nth-child(1){ 
-    width: 434px;
-    display: block;
- 
+.start-of-form h2 {
+  font-size: 40px;
+  color: #000000;
+  text-transform: capitalize;
+  padding: 10px 26px;
+  width: 32rem;
+}
+.formBtn {
+  margin-left: 23px;
+}
+.start-of-form p {
+  color: #000000;
+  font-size: 18px;
+  margin-left: 25px;
+}
+.start-of-form div:nth-child(1) {
+  max-width: 545px;
+  display: block;
 }
 /* .start-of-form div:nth-child(2){
  
   width:40%;
 } */
-.signupImg{
+.signupImg {
   width: 516px;
+  max-width: 1500px;
+  text-align: left;
 }
-input{
-  padding:10px;
-  width:230px;
-  display:flex;
+input {
+  padding: 15px;
+  width: 430px;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-bottom:20px;
-  margin-left:23px;
+  margin-bottom: 20px;
+  margin-left: 23px;
+  border: none;
+  background: #f2f0f0;
+  outline-color: #c1da08;
+}
+.info {
+  background: red;
+}
+.carousel {
+  /* max-width: fit-content; */
+  margin: 0 auto;
+}
+.playericon {
+  position: relative;
+   width: 100px; /* or any other fixed value */
+  max-width: 100px; /* prevent button from expanding */
+  min-width: 100px; /* prevent button from shrinking */
+  left: 23rem;
+  /* top: 88rem; */
+  bottom: 18rem;
+  /* width: 100px; */
+  height: 8vh;
+  padding: 10px;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  text-align: center;
+  border-radius:10px;
 }
 
+i{
+  font-size: 30px;
+}
+.hidden {
+  display: none;
+}
+.vid{
+  width:900px;
+  min-width: 900px;
+  max-width:900px;
+  margin:auto;
+}
+
+@media screen and (max-width:360px){
+  .wrapper{
+    padding:2rem 0px;
+  }
+  .first-row{
+    top:0px;
+    left:0px;
+    padding-right:0px;
+  }
+  .para{
+    padding-right:2rem;
+    padding-left: 0px;
+    top:-5px;
+  }
+  h1{
+    padding-left: 0px;
+    padding-right:2rem;
+  }
+  h2{
+    font-size:25px;
+  }
+button{
+  margin-left:0px;
+
+}
+  section{
+   height:auto;
+   padding: 0rem 1.5rem;
+  }
+
+ 
+ 
+.wrap{
+  /* background: red; */
+  max-width:576px;
+}
+.heroImg{
+  display:none;
+}
+h1{
+  font-size:25px;
+  line-height: 26px;
+}
+.wrapper h2 {
+ 
+    width: auto;
+    font-size: 25px;
+    line-height: 28px;
+    padding:02rem 1rem;
+}
+.youtubevideo{
+  width:350px;
+}
+
+.playericon{
+  bottom:8rem;
+  left:9rem;
+  position: relative;
+    width: 12px;
+    max-width: 45px;
+    min-width:60px;
+  
+}
+i{
+  font-size:20px;
+}
+div .youtubevideo{
+  margin:0px;
+}
+
+/* form section */
+.start-of-form{
+  padding:40px 0px;
+  flex-direction: column;
+  margin:0px;
+  width:auto;
+  max-width:auto;
+}
+.start-of-form h2{
+  font-size:20px;
+  line-height: 25px;
+  width:auto;
+}
+input{
+  width:80%;
+}
+.signupImg{
+  width:300px;
+}
+.contentboxWrapper{
+  flex-direction: column;
+  margin: 0px 20px;
+}
+/* START OF GROW FASTER SECTION */
+.competitorWrap{
+  flex-direction: column;
+  gap:0px;
+  padding:50px 0px;
+}
+.competitorWrap img{
+  width:300px;
+}
+.growth h2{
+  width:auto;
+  font-size: 25px;
+  line-height: 25px;
+}
+.growth{
+  width:auto;
+  padding:20px 25px;
+}
+.first{
+  flex-wrap: wrap;
+  gap:0px;
+}
+.first .firstImg{
+  width:50px;
+}
+.first h3{
+  font-size:20px;
+  line-height: 25px;
+}
+ul{
+  padding:40px 50px;
+}
+.contentboxWrapper{
+  gap:5px;
+}
+
+/* sliders */
+.slide-text{
+  font-size:16px;
+  line-height:20px;
+  width:auto;
+}
+.carousel{
+  height:36vh;
+  padding:40px;
+  overflow:visible;
+}
+.togglePage{
+  display:none;
+}
+.pagination{
+ top:0px;
+}
+.carousel img{
+  top:150px;
+  left:0px;
+  width:80px;
+}
+div{
+  gap:0px;
+}
+}
+
+@media screen and (max-width:576px){
+  .wrapper{
+    padding:3rem;
+  }
+  section{
+    height: auto;
+    padding-bottom:12rem;
+  }
+  .playericon{
+   
+    left: 4rem;
+    
+    bottom: 7rem;
+  }
+.wrap{
+  /* background: red; */
+  max-width:576px;
+}
+.heroImg{
+  display:none;
+}
+h1{
+  font-size:25px;
+  line-height: 26px;
+}
+
+.wrapper h2 {
+ 
+    width: auto;
+    font-size: 25px;
+    line-height: 28px;
+}
+.youtubevideo{
+  width:305px;
+  max-width:350px;
+
+
+}
+div .youtubevideo{
+  margin:0px;
+}
+
+/* form section */
+.start-of-form{
+  flex-direction: column;
+  margin:0px;
+  width:auto;
+  max-width:auto;
+}
+.start-of-form h2{
+  font-size:20px;
+  line-height: 25px;
+  width:auto;
+}
+input{
+  width:80%;
+}
+.signupImg{
+  width:300px;
+}
+.contentboxWrapper{
+  flex-direction: column;
+  margin: 0px 20px;
+  gap:5px;
+}
+/* START OF GROW FASTER SECTION */
+.competitorWrap{
+  flex-direction: column;
+  gap:0px;
+  padding:50px 0px;
+}
+.competitorWrap img{
+  width:300px;
+}
+.growth h2{
+  width:auto;
+  font-size: 25px;
+  line-height: 25px;
+}
+.growth{
+  width:auto;
+  padding:20px 25px;
+}
+.first{
+  flex-wrap: wrap;
+  gap:0px;
+}
+.first .firstImg{
+  width:50px;
+}
+.first h3{
+  font-size:20px;
+  line-height: 25px;
+}
+.first-row{
+  left:0px;
+  top:6rem;
+  padding-right: 3rem;
+}
+h1{
+  width:auto;
+  line-height:27px;
+  padding-bottom: 10px;
+}
+h2{
+  font-size:30px;
+}
+.para{
+ padding-right: 0px;
+}
+i{
+  left: 30rem!important;;
+}
+.slide-text{
+font-size: 20px;
+    line-height: 25px;
+    padding-top: 30px;
+    color: #fff;
+    width: 80%;
+}
+
+}
+
+
+@media screen and (min-width:577px) and (max-width:768px){
+  section{
+    height:auto;
+  }
+.wrap{
+  padding-bottom:4rem;
+  /* background: #c1da08; */
+   /* flex-wrap:wrap; */
+}
+h1 {
+    font-size: 30px;
+    line-height: 35px;
+    font-weight: 300;
+     padding-left: 0rem;
+    }
+    .para{
+      padding-left:0px;
+      padding-right:0px;
+    }
+    button{
+      margin-left:0px;
+    }
+    .heroImg{
+    max-width: 500px;
+     }
+     .first-row{
+      left:3rem;
+     }
+
+/* CREATE TIMELINE */
+.wrapper{
+  padding:5rem 2rem;
+}
+.wrapper h2{
+  font-size:35px;
+  line-height:40px;
+  width:auto;
+}
+div .youtubevideo{
+  margin:1rem 0rem;
+  width:70%;
+  
+}
+.playericon{
+  left:16rem;
+  bottom:15rem;
+}
+/* CONTENT BOXES */
+.contentboxWrapper{
+  flex-wrap:wrap;
+  gap:0px;
+}
+/* GROW FASTER SECTION */
+.competitorWrap{
+  flex-wrap:wrap;
+  gap:0px;
+}
+.growth h2{
+  line-height:40px;
+}
+.start-of-form {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding:50px 0px;
+}
+.slide-text {
+              font-size:20px;
+              line-height: 22px;
+              width:70%;
+       }
+
+
+}
+@media screen and (min-width:769px) and (max-width:992px){
+ 
+  .heroImg {
+    max-width: 428px;
+  }
+  .para{
+    padding-right:0px;
+  
+  }
+  .contentboxWrapper{
+    gap:10px;
+    margin:0px 10px;
+  }
+  section{
+    height:auto;
+    padding-bottom: 14rem;
+ 
+  }
+  div .youtubevideo[data-v-2b45e3a1] {
+    display: block;
+    margin: 50px auto 50px 0px;
+    /* margin: 50px auto 10px auto; */
+    
+    width: 80%;
+  }
+}
+@media screen and (min-width:993px) and (max-width:1024px){
+  .para{
+    padding-right: 0px;
+  }
+  section{
+    height:80vh;
+  }
+  .first-row {
+    left:2rem;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 35px;
+   
+ padding-left: 2rem;
+    text-transform: capitalize;
+    font-family: "Krona One", sans-serif;
+    width: 100%;
+}
+.wrapper{
+    padding: 5rem 2rem 0rem 2rem;
+}
+  .growth{
+    width:50%;
+  }
+  .competitorWrap{
+    padding:0px;
+    width:100%;
+    gap:0px;
+  }
+  .signupImg{
+    width: 370px;
+  }
+}
 </style>

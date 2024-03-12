@@ -120,4 +120,8 @@ export default {
  .active{
        background: blue; 
  }
+
+ @media screen and (min-width:577px) and (max-width:768px){
+      
+}
 </style>
