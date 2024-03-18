@@ -120,8 +120,15 @@ export default {
  .active{
        background: blue; 
  }
+@media screen and (max-width:560px){
+       .navigate{
+              display:none;
+       }
+}
 
- @media screen and (min-width:577px) and (max-width:768px){
-      
+@media screen and (max-width:360px){
+       .navigate{
+              display:none;
+       }
 }
 </style>

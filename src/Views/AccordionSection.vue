@@ -75,7 +75,12 @@ i{
               width:auto;
        }
        i{
-              left:13rem;
+              position: relative;
+    /* right: 0; */
+    left: 1rem;
+    display: flex;
+    justify-content: flex-end;
+          
        }
        dd{
               width:auto;
@@ -97,6 +102,12 @@ i{
        }
        i{
               left:38rem;
+       }
+}
+
+@media screen and (max-width:360px){
+       i{
+              left:1rem;
        }
 }
 </style>

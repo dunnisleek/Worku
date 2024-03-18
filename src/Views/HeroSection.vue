@@ -560,9 +560,7 @@ input {
   background: #f2f0f0;
   outline-color: #c1da08;
 }
-.info {
-  background: red;
-}
+
 .carousel {
   /* max-width: fit-content; */
   margin: 0 auto;
@@ -596,287 +594,68 @@ i{
   max-width:900px;
   margin:auto;
 }
-
-@media screen and (max-width:360px){
-  .wrapper{
-    padding:2rem 0px;
-  }
-  .first-row{
-    top:0px;
-    left:0px;
-    padding-right:0px;
-  }
+@media screen and (min-width:993px) and (max-width:1024px){
   .para{
-    padding-right:2rem;
-    padding-left: 0px;
-    top:-5px;
-  }
-  h1{
-    padding-left: 0px;
-    padding-right:2rem;
-  }
-  h2{
-    font-size:25px;
-  }
-button{
-  margin-left:0px;
-
-}
-  section{
-   height:auto;
-   padding: 0rem 1.5rem;
-  }
-
- 
- 
-.wrap{
-  /* background: red; */
-  max-width:576px;
-}
-.heroImg{
-  display:none;
-}
-h1{
-  font-size:25px;
-  line-height: 26px;
-}
-.wrapper h2 {
- 
-    width: auto;
-    font-size: 25px;
-    line-height: 28px;
-    padding:02rem 1rem;
-}
-.youtubevideo{
-  width:350px;
-}
-
-.playericon{
-  bottom:8rem;
-  left:9rem;
-  position: relative;
-    width: 12px;
-    max-width: 45px;
-    min-width:60px;
-  
-}
-i{
-  font-size:20px;
-}
-div .youtubevideo{
-  margin:0px;
-}
-
-/* form section */
-.start-of-form{
-  padding:40px 0px;
-  flex-direction: column;
-  margin:0px;
-  width:auto;
-  max-width:auto;
-}
-.start-of-form h2{
-  font-size:20px;
-  line-height: 25px;
-  width:auto;
-}
-input{
-  width:80%;
-}
-.signupImg{
-  width:300px;
-}
-.contentboxWrapper{
-  flex-direction: column;
-  margin: 0px 20px;
-}
-/* START OF GROW FASTER SECTION */
-.competitorWrap{
-  flex-direction: column;
-  gap:0px;
-  padding:50px 0px;
-}
-.competitorWrap img{
-  width:300px;
-}
-.growth h2{
-  width:auto;
-  font-size: 25px;
-  line-height: 25px;
-}
-.growth{
-  width:auto;
-  padding:20px 25px;
-}
-.first{
-  flex-wrap: wrap;
-  gap:0px;
-}
-.first .firstImg{
-  width:50px;
-}
-.first h3{
-  font-size:20px;
-  line-height: 25px;
-}
-ul{
-  padding:40px 50px;
-}
-.contentboxWrapper{
-  gap:5px;
-}
-
-/* sliders */
-.slide-text{
-  font-size:16px;
-  line-height:20px;
-  width:auto;
-}
-.carousel{
-  height:36vh;
-  padding:40px;
-  overflow:visible;
-}
-.togglePage{
-  display:none;
-}
-.pagination{
- top:0px;
-}
-.carousel img{
-  top:150px;
-  left:0px;
-  width:80px;
-}
-div{
-  gap:0px;
-}
-}
-
-@media screen and (max-width:576px){
-  .wrapper{
-    padding:3rem;
+    padding-right: 0px;
   }
   section{
-    height: auto;
-    padding-bottom:12rem;
+    height:80vh;
   }
-  .playericon{
+  .first-row {
+    left:2rem;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 35px;
    
-    left: 4rem;
-    
-    bottom: 7rem;
+ padding-left: 2rem;
+    text-transform: capitalize;
+    font-family: "Krona One", sans-serif;
+    width: 100%;
+}
+.wrapper{
+    padding: 5rem 2rem 0rem 2rem;
+}
+  .growth{
+    width:50%;
   }
-.wrap{
-  /* background: red; */
-  max-width:576px;
-}
-.heroImg{
-  display:none;
-}
-h1{
-  font-size:25px;
-  line-height: 26px;
+  .competitorWrap{
+    padding:0px;
+    width:100%;
+    gap:0px;
+  }
+  .signupImg{
+    width: 370px;
+  }
 }
 
-.wrapper h2 {
+@media screen and (min-width:769px) and (max-width:992px){
  
-    width: auto;
-    font-size: 25px;
-    line-height: 28px;
-}
-.youtubevideo{
-  width:305px;
-  max-width:350px;
+ .heroImg {
+   max-width: 428px;
+ }
+ .para{
+   padding-right:0px;
+ 
+ }
+ .contentboxWrapper{
+   gap:10px;
+   margin:0px 10px;
+ }
+ section{
+   height:auto;
+   padding-bottom: 14rem;
 
-
-}
-div .youtubevideo{
-  margin:0px;
-}
-
-/* form section */
-.start-of-form{
-  flex-direction: column;
-  margin:0px;
-  width:auto;
-  max-width:auto;
-}
-.start-of-form h2{
-  font-size:20px;
-  line-height: 25px;
-  width:auto;
-}
-input{
-  width:80%;
-}
-.signupImg{
-  width:300px;
-}
-.contentboxWrapper{
-  flex-direction: column;
-  margin: 0px 20px;
-  gap:5px;
-}
-/* START OF GROW FASTER SECTION */
-.competitorWrap{
-  flex-direction: column;
-  gap:0px;
-  padding:50px 0px;
-}
-.competitorWrap img{
-  width:300px;
-}
-.growth h2{
-  width:auto;
-  font-size: 25px;
-  line-height: 25px;
-}
-.growth{
-  width:auto;
-  padding:20px 25px;
-}
-.first{
-  flex-wrap: wrap;
-  gap:0px;
-}
-.first .firstImg{
-  width:50px;
-}
-.first h3{
-  font-size:20px;
-  line-height: 25px;
-}
-.first-row{
-  left:0px;
-  top:6rem;
-  padding-right: 3rem;
-}
-h1{
-  width:auto;
-  line-height:27px;
-  padding-bottom: 10px;
-}
-h2{
-  font-size:30px;
-}
-.para{
- padding-right: 0px;
-}
-i{
-  left: 30rem!important;;
-}
-.slide-text{
-font-size: 20px;
-    line-height: 25px;
-    padding-top: 30px;
-    color: #fff;
-    width: 80%;
-}
+ }
+ div .youtubevideo{
+   display: block;
+   margin: 50px auto 50px 0px;
+   /* margin: 50px auto 10px auto; */
+   
+   width: 80%;
+ }
 
 }
-
-
 @media screen and (min-width:577px) and (max-width:768px){
   section{
     height:auto;
@@ -953,64 +732,323 @@ div .youtubevideo{
 
 
 }
-@media screen and (min-width:769px) and (max-width:992px){
- 
-  .heroImg {
-    max-width: 428px;
-  }
-  .para{
-    padding-right:0px;
-  
-  }
-  .contentboxWrapper{
-    gap:10px;
-    margin:0px 10px;
+@media screen and (max-width:576px){
+  .wrapper{
+    padding:3rem;
   }
   section{
-    height:auto;
-    padding-bottom: 14rem;
- 
+    height: auto;
+    padding-bottom:12rem;
   }
-  div .youtubevideo[data-v-2b45e3a1] {
-    display: block;
-    margin: 50px auto 50px 0px;
-    /* margin: 50px auto 10px auto; */
-    
-    width: 80%;
-  }
-}
-@media screen and (min-width:993px) and (max-width:1024px){
-  .para{
-    padding-right: 0px;
-  }
-  section{
-    height:80vh;
-  }
-  .first-row {
-    left:2rem;
-  }
-  h1 {
-    font-size: 30px;
-    line-height: 35px;
+  .playericon{
    
- padding-left: 2rem;
-    text-transform: capitalize;
-    font-family: "Krona One", sans-serif;
-    width: 100%;
-}
-.wrapper{
-    padding: 5rem 2rem 0rem 2rem;
-}
-  .growth{
-    width:50%;
+    left: 4rem;
+    bottom: 7rem;
   }
-  .competitorWrap{
-    padding:0px;
-    width:100%;
-    gap:0px;
-  }
-  .signupImg{
-    width: 370px;
-  }
+.wrap{
+  /* background: red; */
+  max-width:576px;
 }
+.heroImg{
+  display:none;
+}
+h1{
+  font-size:25px;
+  line-height: 26px;
+}
+
+.wrapper h2 {
+ 
+    width: auto;
+    font-size: 25px;
+    line-height: 28px;
+}
+.youtubevideo{
+  width:305px;
+  max-width:350px;
+
+
+}
+div .youtubevideo{
+  margin-left:10px;
+  /* margin:0px;
+  margin-top: 25px; */
+}
+
+/* form section */
+.start-of-form{
+  flex-direction: column;
+  margin:0px;
+  width:auto;
+  max-width:auto;
+  padding:80px 0px;
+}
+.start-of-form h2{
+  font-size:20px;
+  line-height: 25px;
+  width:auto;
+}
+input{
+  width:80%;
+}
+.signupImg{
+  width:300px;
+}
+.contentboxWrapper{
+  flex-direction: column;
+  margin: 0px 20px;
+  gap:5px;
+}
+/* START OF GROW FASTER SECTION */
+.competitorWrap{
+  flex-direction: column;
+  gap:0px;
+  padding:50px 0px;
+}
+.competitorWrap img{
+  width:300px;
+}
+.growth h2{
+  width:auto;
+  font-size: 25px;
+  line-height: 25px;
+}
+.growth{
+  width:auto;
+  padding:20px 25px;
+}
+.first{
+  flex-wrap: wrap;
+  gap:0px;
+}
+.first .firstImg{
+  width:50px;
+}
+.first h3{
+  font-size:20px;
+  line-height: 25px;
+}
+.first-row{
+  left:0px;
+  top:6rem;
+  padding-right: 3rem;
+}
+h1{
+  width:auto;
+  line-height:27px;
+  padding-bottom: 10px;
+}
+h2{
+  font-size:30px;
+}
+.para{
+ padding-right: 0px;
+}
+i{
+  left: 30rem!important;;
+}
+.slide-text{
+font-size: 20px;
+    line-height: 25px;
+    padding-top: 30px;
+    color: #fff;
+    width: 80%;
+}
+.carousel img{
+    position: inherit;
+    margin-top:2rem;
+    margin-left:2rem;
+}
+.slide-name{
+  position:inherit;
+  margin-left:2rem;
+}
+.slide-role{
+  position:inherit;
+  margin-left:2rem;
+}
+.playericon{
+  position: relative;
+   width: 70px; /* or any other fixed value */
+  max-width: 70px; /* prevent button from expanding */
+  min-width: 70px; /* prevent button from shrinking */
+  left:5rem;
+  bottom:8rem;
+}
+}
+@media screen and (max-width:360px){
+  section{
+   height:auto;
+   padding: 06rem 1.5rem;
+  }
+  .wrapper{
+    padding:2rem 0px;
+  }
+  .first-row{
+    top:0px;
+    left:0px;
+    padding-right:0px;
+  }
+  .para{
+    padding-right:2rem;
+    padding-left: 0px;
+    top:-5px;
+  }
+  h1{
+    padding-left: 0px;
+    padding-right:2rem;
+  }
+  h2{
+    font-size:25px;
+  }
+button{
+  margin-left:0px;
+
+}
+ 
+.wrap{
+  /* background: red; */
+  max-width:576px;
+}
+.heroImg{
+  display:none;
+}
+h1{
+  font-size:25px;
+  line-height: 26px;
+}
+.wrapper h2 {
+ 
+    width: auto;
+    font-size: 25px;
+    line-height: 28px;
+    padding:02rem 1rem;
+}
+
+.playericon{
+  bottom:8rem;
+  left:9rem;
+  position: relative;
+    width: 12px;
+    max-width: 45px;
+    min-width:60px;
+  
+}
+
+/* i{
+  font-size:20px;
+ 
+} */
+div .youtubevideo{
+  width:340px;
+   margin-top: 20px;
+   
+}
+
+/* form section */
+.start-of-form{
+  padding:90px 0px;
+  flex-direction: column;
+  margin:0px;
+  width:auto;
+  max-width:auto;
+}
+.start-of-form h2{
+  font-size:20px;
+  line-height: 25px;
+  width:auto;
+}
+input{
+  width:80%;
+}
+.signupImg{
+  width:300px;
+}
+.contentboxWrapper{
+  flex-direction: column;
+  margin: 0px 20px;
+}
+/* START OF GROW FASTER SECTION */
+.competitorWrap{
+  flex-direction: column;
+  gap:0px;
+  padding:50px 0px;
+}
+.competitorWrap img{
+  width:300px;
+}
+.growth h2{
+  width:auto;
+  font-size: 25px;
+  line-height: 25px;
+}
+.growth{
+  width:auto;
+  padding:20px 25px;
+}
+.first{
+  flex-wrap: wrap;
+  gap:0px;
+}
+.first .firstImg{
+  width:50px;
+}
+.first h3{
+  font-size:20px;
+  line-height: 25px;
+}
+ul{
+  padding:40px 50px;
+}
+.contentboxWrapper{
+  gap:5px;
+}
+
+/* sliders */
+.slide-text{
+  font-size:16px;
+  line-height:20px;
+  width:auto;
+}
+
+.carousel{
+  height:48vh;
+  /* padding:40px; */
+  overflow:visible;
+}
+.togglePage{
+  display:none;
+}
+.pagination{
+ top:0px;
+}
+.carousel img{
+  top:150px;
+  left:0px;
+  width:80px;
+}
+div{
+  gap:0px;
+}
+.slide-name{
+  position:inherit;
+  margin-left:2rem;
+}
+.slide-text{
+  max-width:80%;
+}
+.carousel img{
+    position: inherit;
+    margin-left:2rem;
+}
+  .info{
+    padding-top:20px;
+  }
+ 
+}
+
+
+
+
+
 </style>
