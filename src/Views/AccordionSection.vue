@@ -73,6 +73,8 @@ i{
 @media screen and (max-width:576px){
        dt{
               width:auto;
+              display:flex;
+              justify-content: space-between;
        }
        i{
               position: relative;
@@ -96,6 +98,8 @@ i{
 @media screen and (min-width:577px) and (max-width:768px){
        dt{
        width:75%;
+       display:flex;
+       justify-content: space-between;
        }
        dd{
               width:75%;
@@ -108,6 +112,10 @@ i{
 @media screen and (max-width:360px){
        i{
               left:1rem;
+       }
+       dt{
+              display:flex;
+              justify-content: space-between;
        }
 }
 </style>
