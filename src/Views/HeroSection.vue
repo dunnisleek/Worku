@@ -742,7 +742,7 @@ div .youtubevideo{
   }
   .playericon{
    
-    left: 4rem;
+    left: 5.5rem;
     bottom: 7rem;
   }
 .wrap{
@@ -770,7 +770,7 @@ h1{
 
 }
 div .youtubevideo{
-  margin-left:10px;
+  margin-left:1px;
   /* margin:0px;
   margin-top: 25px; */
 }
@@ -872,7 +872,7 @@ font-size: 20px;
    width: 70px; /* or any other fixed value */
   max-width: 70px; /* prevent button from expanding */
   min-width: 70px; /* prevent button from shrinking */
-  left:5rem;
+  left:6rem;
   bottom:8rem;
 }
 }
@@ -883,6 +883,7 @@ font-size: 20px;
   }
   .wrapper{
     padding:2rem 0px;
+    padding-left: 10px;
   }
   .first-row{
     top:0px;
